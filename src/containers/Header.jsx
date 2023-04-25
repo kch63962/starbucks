@@ -3,6 +3,10 @@ import MainMenu from "../components/header/MainMenu";
 import SubMenu from "../components/header/SubMenu";
 import Logo from "../images/starbucks_logo.png";
 import styled from "styled-components";
+import Badge from "../components/header/Badge";
+import Badge1 from "../images/badge1.jpg";
+import Badge2 from "../images/badge2.jpg";
+import { useEffect, useState } from "react";
 
 export const menuItems = [
   {
@@ -302,7 +306,30 @@ export const HeaderContainer = styled.div`
   border-bottom: 1px solid #c8c8c8;
 `;
 
+export const Badges = styled.div`
+  position: absolute;
+  top: 132px;
+  right: 12px;
+  transition: opacity 0.6s;
+  opacity: ${(props) => (props.scrollY > 500 ? "0" : "1")};
+`;
+
 const Header = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = () => {
+    const scrollPosition = window.pageYOffset;
+    setScrollY(scrollPosition);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <HeaderContainer>
       <Inner>
@@ -312,6 +339,10 @@ const Header = () => {
         <SubMenu />
         <MainMenu />
       </Inner>
+      <Badges scrollY={scrollY}>
+        <Badge src={Badge1} />
+        <Badge src={Badge2} />
+      </Badges>
     </HeaderContainer>
   );
 };

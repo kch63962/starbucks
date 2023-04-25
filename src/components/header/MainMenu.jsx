@@ -40,7 +40,7 @@ export const ContentMenu = styled.div`
   background-color: #2c2a29;
 `;
 
-export const Inner = styled.div`
+export const Inner = styled.ul`
   width: 1100px;
   margin: 0 auto;
   position: relative;

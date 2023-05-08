@@ -11,10 +11,12 @@ import slideOn from "../../images/promotion_slide_pager_on.png";
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 export const PromotionForm = styled.div`
-  height: 693px;
+  height: ${(props) => (props.toggle ? "693px" : "0px")};
+  transition: height 0.4s;
   background-color: #f6f5ef;
   position: relative;
   overflow: hidden;
+
   .swiper-pagination {
     bottom: 40px;
     left: 0;
@@ -64,7 +66,7 @@ export const PromotionForm = styled.div`
   }
 `;
 
-const Promotion = () => {
+const Promotion = ({ toggle }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleTranstionEnd = (swiper) => {
@@ -73,7 +75,7 @@ const Promotion = () => {
   };
 
   return (
-    <PromotionForm>
+    <PromotionForm toggle={toggle}>
       <Swiper
         style={{
           width: "calc(819px * 3 + 20px)",

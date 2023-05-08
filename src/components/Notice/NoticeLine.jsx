@@ -89,7 +89,11 @@ export const TogglePromotion = styled.div`
   }
 `;
 
-const NoticeLine = () => {
+const NoticeLine = ({ toggle, setToggle }) => {
+  const ClickToggle = () => {
+    setToggle(!toggle);
+  };
+
   return (
     <NoticeLineForm>
       <BgLeft></BgLeft>
@@ -125,7 +129,9 @@ const NoticeLine = () => {
         <InnerRight>
           <h2>스타벅스 프로모션</h2>
           <TogglePromotion>
-            <div className='material-icons'>upload</div>
+            <div className='material-icons' onClick={ClickToggle}>
+              upload
+            </div>
           </TogglePromotion>
         </InnerRight>
       </Inner>

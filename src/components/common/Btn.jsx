@@ -26,13 +26,22 @@ export const BtnLink = styled(Link)`
   transition: 0.4s;
   color: ${({ color }) => color};
   border-color: ${({ bordercolor }) => bordercolor};
+  background-color: ${({ backgroundcolor }) => backgroundcolor};
   &:hover {
     color: ${({ hovercolor }) => hovercolor};
     background-color: ${({ hoverbg }) => hoverbg};
   }
 `;
 
-const Btn = ({ color, bordercolor, text, hovercolor, hoverbg, style }) => {
+const Btn = ({
+  color,
+  bordercolor,
+  text,
+  hovercolor,
+  hoverbg,
+  style,
+  backgroundcolor,
+}) => {
   return (
     <BtnLink
       to='/'
@@ -41,6 +50,7 @@ const Btn = ({ color, bordercolor, text, hovercolor, hoverbg, style }) => {
       bordercolor={bordercolor}
       hovercolor={hovercolor}
       hoverbg={hoverbg}
+      backgroundcolor={backgroundcolor}
     >
       {text}
     </BtnLink>

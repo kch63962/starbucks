@@ -312,6 +312,7 @@ export const Badges = styled.div`
   right: 12px;
   transition: opacity 0.6s;
   opacity: ${(props) => (props.scrollY > 500 ? "0" : "1")};
+  display: ${(props) => (props.scrollY > 500 ? "none" : "block")};
 `;
 
 const Header = () => {

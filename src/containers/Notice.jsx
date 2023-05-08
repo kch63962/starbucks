@@ -1,3 +1,4 @@
+import { useState } from "react";
 import NoticeLine from "../components/Notice/NoticeLine";
 import Promotion from "../components/Notice/Promotion";
 import PromotionSlide1 from "../images/promotion_slide1.jpg";
@@ -50,10 +51,12 @@ export const promotionItem = [
 ];
 
 const Notice = () => {
+  const [toggle, setToggle] = useState(true);
+
   return (
     <div>
-      <NoticeLine />
-      <Promotion />
+      <NoticeLine toggle={toggle} setToggle={setToggle} />
+      <Promotion toggle={toggle} />
     </div>
   );
 };
